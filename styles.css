@@ -1,0 +1,168 @@
+
+/* main toggle wrapper */
+.toggle {
+	position: relative;
+	width: 51px;
+	height: 32px;
+	border-radius: 30px;
+}
+
+/* expand touch area */
+.toggle:after {
+	content: '';
+	position: absolute;
+	top: -4px;
+	right: -10px;
+	bottom: -4px;
+	left: -10px;
+	background: transparent;
+}
+
+/* grey outline background */
+.toggle:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 52px;
+	height: 32px;
+	z-index: 0;
+	background: #e6e6e6;
+	border-radius: 30px;
+}
+
+/* wrapper for animated backgrounds & knob */
+.toggle .bg {
+	width: 51px;
+	height: 32px;
+	border-radius: 30px;
+	overflow: hidden;
+}
+
+/* white animated background */
+.toggle .bg:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 30px;
+	width: 48px;
+	height: 28px;
+	top: 2px;
+	left: 2px;
+	z-index: 1;
+	background: #FFF;
+	-webkit-transform-origin: 50% 50%;
+}
+
+/* green animated background */
+.toggle .bg:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 30px;
+	width: 52px;
+	height: 32px;
+	z-index: 2;
+	background: #55dc78;
+	opacity: 0;
+}
+
+/* knob border & shadow */
+.toggle .bg .knob {
+	position: absolute;
+	z-index: 3;
+	top: 1px;
+	left: 1px;
+	width: 28px;
+	height: 28px;
+	padding: 1px;
+	overflow: hidden;
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 30px;
+	box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+	-webkit-transition: width 500ms ease-in-out;
+}
+
+/* knob center circle */
+.toggle .bg .knob:before {
+	content: '';
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	bottom: 1px;
+	left: 1px;
+	background: #FFF;
+	border-radius: 30px;
+}
+
+/* toggle on state */
+.toggle.toggleOn .bg .knob {
+	left: 0px;
+	right: auto;
+	-webkit-transform: translate3d(1px, 0, 0);
+	-webkit-animation: slideRight_on 300ms 1 forwards ease 150ms,
+					   adjustWidth_on 350ms 1 forwards ease;
+}
+.toggle.toggleOn .bg:after { -webkit-animation: fadeIn_on 400ms 1 forwards ease; }
+.toggle.toggleOn .bg:before { -webkit-animation: scaleDown_on 600ms 1 forwards ease; }
+
+/* toggle off state */
+.toggle.toggleOff .bg .knob {
+	right: 0px;
+	left: auto;
+	-webkit-transform: translate3d(0, 0, 0);
+	-webkit-animation: slideLeft_off 300ms 1 forwards ease 150ms,
+					   adjustWidth_off 350ms 1 forwards ease;
+}
+.toggle.toggleOff .bg:after { -webkit-animation: fadeOut_off 400ms 1 forwards ease; }
+.toggle.toggleOff .bg:before { -webkit-animation: scaleUp_off 600ms 1 forwards ease; }
+
+
+/* TOGGLE ON ANIMATIONS */
+@-webkit-keyframes scaleDown_on {
+	0% { -webkit-transform: scale(1); }
+	100% { -webkit-transform: scale(0); }
+}
+@-webkit-keyframes slideRight_on {
+	0% { -webkit-transform: translate3d(2px, 0, 0); }
+	100% { -webkit-transform: translate3d(21px, 0, 0); }
+}
+@-webkit-keyframes adjustWidth_on {
+	0% { width: 28px; }
+	40% { width: 38px; }
+	100% { width: 28px; }
+}
+@-webkit-keyframes fadeIn_on {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@-webkit-keyframes fadeOut_on {
+	0% { opacity: 1; }
+	100% { opacity: 0; }
+}
+
+
+/* TOGGLE OFF ANIMATIONS */
+@-webkit-keyframes scaleUp_off {
+	0% { -webkit-transform: scale(0); }
+	100% { -webkit-transform: scale(1); }
+}
+@-webkit-keyframes slideLeft_off {
+	0% { -webkit-transform: translate3d(0, 0, 0); }
+	100% { -webkit-transform: translate3d(-20px, 0, 0); }
+}
+@-webkit-keyframes adjustWidth_off {
+	0% { width: 28px; }
+	40% { width: 38px; }
+	100% { width: 28px; }
+}
+@-webkit-keyframes fadeIn_off {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@-webkit-keyframes fadeOut_off {
+	0% { opacity: 1; }
+	100% { opacity: 0; }
+}
