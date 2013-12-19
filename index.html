@@ -8,7 +8,7 @@
 <body>
     
     <div class="toggle" id="toggle">
-	    	<div class="bg"><div class="knob"></div></div>
+	    <div class="bg"><div class="knob"></div></div>
     </div>
     
     <script type="text/javascript">
@@ -17,11 +17,13 @@
 			var className = ' ' + e.currentTarget.className + ' ';
 			
 			if (~className.indexOf(' toggleOn '))
-		    		this.className = className.replace(' toggleOn ', ' toggleOff ');
+		    	this.className = className.replace(' toggleOn ', ' toggleOff ');
+		    		
 			else if (~className.indexOf(' toggleOff '))
 				this.className = className.replace(' toggleOff ', ' toggleOn ');
+				
 			else
-		    		this.className += ' toggleOn ';
+		    	this.className += ' toggleOn ';
 	    }
 	</script>
     
